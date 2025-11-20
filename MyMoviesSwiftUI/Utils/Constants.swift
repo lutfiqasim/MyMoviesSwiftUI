@@ -32,14 +32,4 @@ struct Constants {
     static let trendingTVString = "Trending TV"
     static let topRatedMoviesString   = "Top Rated Movies"
     static let topRatedTVString   = "Top Rated TV"
-    
-    
-    static func addPosterPath(to titles: inout[Title]) {
-        
-        for indx in titles.indices {
-            if let path = titles[indx].posterPath {
-                titles[indx].posterPath = Constants.posterURLString + path
-            }
-        }
-    }
 }

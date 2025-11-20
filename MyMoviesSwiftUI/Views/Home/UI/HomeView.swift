@@ -11,7 +11,7 @@ struct HomeView: View {
     
     @State private var isRefreshing = UUID()
     var heroTestTitle = Constants.testTitleURL
-    let viewModel = ViewModel()
+    let viewModel: ViewModel = .makeDefault()
     
     var body: some View {
         GeometryReader { geo in

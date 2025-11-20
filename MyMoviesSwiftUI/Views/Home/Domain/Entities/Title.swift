@@ -7,16 +7,17 @@
 
 import Foundation
 
-struct APIObject: Decodable {
-    var results: [Title] = []
-}
-
-struct Title: Decodable, Identifiable {
+struct Title: Decodable, Identifiable, Sendable {
     var id: Int
     var title: String?
     var name: String?
     var overview: String?
     var posterPath: String?
+    
+    var posterURLString: String? {
+        guard let path = posterPath else { return nil }
+        return Constants.posterURLString + path
+    }
     
     static var previewTitles = [
         Title(id: 1, title: "Steins;Gate", name: "Steins;Gate", overview: "An experimental research facility in the Japanese city of Tokai is secretly run by the enigmatic scientist Dr. Stephen Hawking.", posterPath: Constants.testTitleURL),

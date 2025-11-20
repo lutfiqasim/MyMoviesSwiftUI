@@ -10,18 +10,21 @@ import Foundation
 enum NetworkError: Error, LocalizedError {
     case badURLResponse(underLyingError: Error)
     case missingConfig
-    case urlFailed
+    case invalidURL
     case decodingError(underLyingError: Error)
+    case unknown
     var errorDescription: String? {
         switch self {
         case .badURLResponse(underLyingError: let error):
             return "Bad URL response: \(error.localizedDescription)"
         case .missingConfig:
             return "Missing configuration"
-        case .urlFailed:
+        case .invalidURL:
             return "URL Parsing Failed"
         case .decodingError(let error):
             return "Decoding Error: \(error.localizedDescription)"
+        case .unknown:
+            return "Something Went Wrong"
         }
     }
 }
